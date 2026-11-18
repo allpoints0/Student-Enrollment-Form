@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Student Profile Details</title>
+<style>
+  :root{
+    --navy:#12355b; --navy-dark:#0b2240; --gold:#07697b; --gold-dark:#0db4d2;
+    --ink:#17212b; --muted:#5f6b78; --line:#d6dde5; --bg:#f5f7fa; --card:#fff;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{font-family:"Segoe UI",Roboto,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.5}
+
+  .page{display:grid;grid-template-columns:minmax(300px,2fr) 3fr;min-height:100vh}
+
+  /* Left: image panel with logo */
+  .side{
+    position:sticky;top:0;height:100vh;
+    display:flex;flex-direction:column;justify-content:space-between;
+    padding:32px;color:#fff;
+    background:
+      linear-gradient(180deg,rgba(11,34,64,.55) 0%,rgba(11,34,64,.88) 100%),
+      url("hero.webp") center/cover no-repeat,
+      var(--navy-dark);
+  }
+  .logo-chip{align-self:flex-start;border-radius:10px;padding:8px 14px;display:flex;align-items:center}
+  .logo-chip img{display:block;height:46px;width:auto;max-width:200px}
+  .side h1{font-size:2rem;line-height:1.2;margin:0 0 10px}
+  .side p{margin:0;color:#dbe5f0;max-width:34ch}
+  .side .bar{width:56px;height:4px;background:var(--gold);border-radius:2px;margin-bottom:16px}
+
+  /* Right: form */
+  .main{padding:40px 32px 64px;display:flex;justify-content:center}
+  form{width:100%;max-width:700px}
+  .form-head{margin-bottom:22px}
+  .form-head h2{margin:0 0 4px;font-size:1.5rem}
+  .form-head p{margin:0;color:var(--muted)}
+
+  fieldset{border:1px solid var(--line);background:var(--card);border-radius:10px;padding:18px 20px 20px;margin:0 0 18px}
+  legend{font-weight:700;padding:0 8px;color:var(--navy)}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .full{grid-column:1/-1}
+  label{display:block;font-size:.88rem;font-weight:600;margin-bottom:4px}
+  input,select,textarea{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:6px;font:inherit;background:#fff;color:var(--ink)}
+  input:focus,select:focus,textarea:focus,button:focus-visible{outline:2px solid var(--navy);outline-offset:1px}
+  input[readonly]{background:#eef2f6}
+  .hint{font-size:.8rem;color:var(--muted);margin-top:4px}
+
+  button{background:var(--gold);color:#ffffff;border:0;border-radius:6px;padding:13px 30px;font:inherit;font-weight:700;cursor:pointer}
+  button:hover{background:var(--gold-dark)}
+  button:disabled{opacity:.6;cursor:wait}
+  #msg{margin-top:14px;font-weight:600}
+  .ok{color:#17703a}.err{color:#b3261e}
+
+  /* Tablet & phone: image becomes a top banner */
+  @media(max-width:900px){
+    .page{grid-template-columns:1fr}
+    .side{position:relative;height:auto;min-height:230px;padding:22px}
+    .side h1{font-size:1.45rem}
+    .main{padding:24px 16px 48px}
+  }
+  @media(max-width:600px){
+    .grid{grid-template-columns:1fr}
+    fieldset{padding:16px 14px 18px}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <aside class="side">
+    <div class="logo-chip"><img src="AllPoints-Ltdw.svg" alt="AllPoints logo"></div>
+    <div>
+      <div class="bar"></div>
+      <h1>Start your journey abroad</h1>
+      <p>Share your details and upload your CV. Our counsellor will contact you.</p>
+    </div>
+  </aside>
+
+  <main class="main">
+    <form id="f">
+      <div class="form-head">
+        <h2>Student Profile Details</h2>
+        <p>Fields marked * are required.</p>
+      </div>
+
+      <fieldset>
+        <legend>Personal details</legend>
+        <div class="grid">
+          <div><label for="name">Name *</label><input id="name" name="Name" required></div>
+          <div><label for="number">Number *</label><input id="number" name="Number" type="tel" required></div>
+          <div><label for="dob">Date of birth *</label><input id="dob" name="Date of birth" type="date" required></div>
+          <div><label for="age">Age</label><input id="age" name="Age" readonly></div>
+          <div><label for="email">Email ID *</label><input id="email" name="Email ID" type="email" required></div>
+          <div><label for="place">Place *</label><input id="place" name="Place" required></div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+      <legend>Education</legend>
+      <div class="grid">
+        <div class="full"><label for="qual">Highest qualification *</label><select id="qual" name="Highest qualification" required><option value="">Select</option><option>10th</option><option>12th</option><option>Diploma</option><option>Graduate</option><option>PG</option></select></div>
+        <div><label for="y10">10th pass-out year</label><input id="y10" name="10th pass-out year" inputmode="numeric" maxlength="4"></div>
+        <div><label for="p10">10th percentage</label><input id="p10" name="10th percentage"></div>
+        <div><label for="y12">12th pass-out year</label><input id="y12" name="12th pass-out year" inputmode="numeric" maxlength="4"></div>
+        <div><label for="p12">12th percentage</label><input id="p12" name="12th percentage"></div>
+        <div class="full"><label for="s12">12th stream</label>
+          <select id="s12" name="12th stream"><option value="">Select</option><option>Science</option><option>Commerce</option><option>Humanities</option><option>Other</option></select></div>
+        <div class="full"><label for="work">Work experience, if any</label><textarea id="work" name="Work experience" rows="2"></textarea></div>
+      </div>
+      </fieldset>
+
+      <fieldset>
+      <legend>Study plans</legend>
+      <div class="grid">
+        <div><label for="country">Interested country</label><input id="country" name="Interested country"></div>
+        <div><label for="course">Interested course *</label><select id="course" name="Interested course" required><option value="">Select</option><option>Degree</option><option>Diploma</option><option>PG Diploma</option><option>Masters</option><option>Others</option></select></div>
+        <div><label for="intake">Preferred intake</label><input id="intake" name="Preferred intake" placeholder="e.g. Jan 2027"></div>
+        <div><label for="fund">Funding</label>
+          <select id="fund" name="Funding"><option value="">Select</option><option>Self funded</option><option>Education loan</option><option>Scholarship</option><option>Not decided</option></select></div>
+        <div class="full"><label for="ielts">Language proficiency certificates, if any (IELTS)</label><input id="ielts" name="Language proficiency" placeholder="e.g. IELTS 6.5"></div>
+      </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Upload CV</legend>
+        <label for="cv">CV file</label>
+        <input id="cv" type="file" accept=".pdf,.doc,.docx">
+        <div class="hint">PDF or Word, maximum 5 MB.</div>
+      </fieldset>
+
+      <button id="btn" type="submit">Submit details</button>
+      <div id="msg" role="status"></div>
+    </form>
+  </main>
+
+</div>
+
+<script>
+// Paste your Google Apps Script Web App URL here
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwwOkdhHKZughz1eMRRpApKOB3ZkGurO9zdh3c9FTr4WZIj92U5mx5JHBvALJzAeOnU/exec";
+
+const f = document.getElementById("f"), msg = document.getElementById("msg"), btn = document.getElementById("btn");
+
+document.getElementById("dob").addEventListener("change", e => {
+  const d = new Date(e.target.value); if (isNaN(d)) return;
+  const t = new Date(); let a = t.getFullYear() - d.getFullYear();
+  if (t < new Date(t.getFullYear(), d.getMonth(), d.getDate())) a--;
+  document.getElementById("age").value = a;
+});
+
+const toBase64 = file => new Promise((res, rej) => {
+  const r = new FileReader();
+  r.onload = () => res(r.result.split(",")[1]);
+  r.onerror = () => rej(new Error("Could not read file"));
+  r.readAsDataURL(file);
+});
+
+f.addEventListener("submit", async e => {
+  e.preventDefault();
+  const file = document.getElementById("cv").files[0];
+  if (file && file.size > 5 * 1024 * 1024) { msg.className = "err"; msg.textContent = "CV is larger than 5 MB."; return; }
+  btn.disabled = true; msg.className = ""; msg.textContent = "Submitting...";
+  try {
+    const data = {};
+    new FormData(f).forEach((v, k) => { if (!(v instanceof File)) data[k] = v; });
+    data["Age"] = document.getElementById("age").value;
+    if (file) {
+      data.cvName = file.name;
+      data.cvType = file.type || "application/octet-stream";
+      data.cvBase64 = await toBase64(file);
+    }
+    const r = await fetch(SCRIPT_URL, { method: "POST", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify(data) });
+    const j = await r.json();
+    if (!j.ok) throw new Error(j.error || "Failed");
+    f.reset(); msg.className = "ok"; msg.textContent = "Details submitted. We will contact you soon.";
+  } catch (err) {
+    msg.className = "err"; msg.textContent = "Could not submit. Please try again. (" + err.message + ")";
+  } finally { btn.disabled = false; }
+});
+</script>
+</body>
+</html>
