@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Details Submitted</title>
+<style>
+  :root{--navy-dark:#0b2240;--teal:#07697b;--ink:#17212b;--muted:#5f6b78;--bg:#f5f7fa}
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{font-family:"Segoe UI",Roboto,Arial,sans-serif;color:var(--ink);background:var(--bg);min-height:100vh;display:flex;flex-direction:column}
+  header{background:var(--navy-dark);padding:16px 24px;animation:fade .6s ease both}
+  header img{display:block;height:44px;width:auto;max-width:200px}
+  main{
+  flex:1;display:flex;align-items:center;justify-content:center;padding:24px 16px;
+  background:
+    linear-gradient(rgba(11,34,64,.6), rgba(11,34,64,.8)),
+    url("hero.webp") center/cover no-repeat,
+    var(--navy-dark);
+}
+  .card{background:#fff;border:1px solid #d6dde5;border-radius:12px;padding:40px 32px;max-width:480px;width:100%;text-align:center;animation:rise .7s cubic-bezier(.2,.8,.2,1) both}
+  .tick{position:relative;width:72px;height:72px;border-radius:50%;background:var(--teal);margin:0 auto 20px;display:flex;align-items:center;justify-content:center;animation:pop .6s cubic-bezier(.34,1.56,.64,1) .2s both}
+  .tick::before{content:"";position:absolute;inset:0;border-radius:50%;border:3px solid var(--teal);animation:ring 1.6s ease-out .7s 2 both}
+  .tick svg{width:36px;height:36px;stroke:#fff;fill:none;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+  .tick path{stroke-dasharray:20;stroke-dashoffset:20;animation:draw .5s ease .55s forwards}
+  h1{font-size:1.5rem;margin:0 0 10px;animation:rise .6s ease .5s both}
+  p{margin:0 0 8px;color:var(--muted);line-height:1.6;animation:rise .6s ease .65s both}
+  p+p{animation-delay:.8s}
+
+  @keyframes fade{from{opacity:0}to{opacity:1}}
+  @keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+  @keyframes pop{from{opacity:0;transform:scale(.3)}to{opacity:1;transform:scale(1)}}
+  @keyframes draw{to{stroke-dashoffset:0}}
+  @keyframes ring{from{opacity:.6;transform:scale(1)}to{opacity:0;transform:scale(1.7)}}
+  @media (prefers-reduced-motion:reduce){
+    *,*::before{animation:none!important}
+    .tick path{stroke-dashoffset:0}
+  }
+</style>
+</head>
+<body>
+  <header><img src="AllPoints-Ltdw.svg" alt="AllPoints logo"></header>
+  <main>
+    <div class="card">
+      <div class="tick"><svg viewBox="0 0 24 24"><path pathLength="20" d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+      <h1>Details submitted</h1>
+      <p>Thank you! Your details have been received and our counsellor will contact you soon.</p>
+      <p>You have already submitted this form, so there is no need to fill it again.</p>
+    </div>
+  </main>
+</body>
+</html>
